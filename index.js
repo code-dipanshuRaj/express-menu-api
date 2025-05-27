@@ -22,7 +22,7 @@ app.put('/update/:id', (req, res) => {
   const {dish , price} = req.body
   item.price = price;
   item.item = dish;
-  res.status(250).send(item)
+  res.status(200).send(item)
 })
 
 // delete a given item
@@ -30,14 +30,14 @@ app.delete('/delete/:id', (req, res) => {
   const index = menu.findIndex( itr => itr.id === parseInt(req.params.id) )
   if (index == -1) return res.statusCode(404).send('Please enter valid ID, item not found for given ID!')
   menu.splice(index,1)
-  res.status(222).send(menu)
+  res.status(200).send(menu)
 })
 
 // Get the menu item by id
 app.get('/search/:id', (req, res) => {
   const item = menu.find( itr => itr.id === parseInt(req.params.id) )
   if(!item) return res.status(404).send('Sorry, item not found in menu!')
-  res.status(219).send(item)
+  res.status(200).send(item)
 })
 
 // List the menu items
